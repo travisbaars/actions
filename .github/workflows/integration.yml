@@ -7,7 +7,5 @@ env:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
     name: Test (standard)
-    steps:
-      - uses: travisbaars/actions-rs/.github/workflows/std-test.yml@main
+    uses: travisbaars/actions-rs/.github/workflows/std-test.yml@main
