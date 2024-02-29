@@ -4,13 +4,18 @@ on:
     secrets:
       token:
         required: true
+jobs:
+  test:
+    name: Build/Test
+    uses: travisbaars/actions/rust/std-test.yml@main
 
   publish:
     runs-on: ubuntu-latest
     name: Publish
+    needs: test
     steps:
       - uses: actions/checkout@v4
 
       - run: cargo publish --token ${{ secrets.token }}
-        with:
-          repo-token: ${{ secrets.token }}
+        env:
+          CRATES_TOKEN: ${{ secrets.token }}
