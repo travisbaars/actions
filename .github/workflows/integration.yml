@@ -8,6 +8,6 @@ env:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    name: Test (standard)
     steps:
-      - name: Test (standard)
-      - uses: travisbaars/actions/rust/std-test.yml@main
+      - uses: travisbaars/actions-rs/.github/workflows/std-test.yml@main
