@@ -1,14 +1,16 @@
 name: Integration
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  workflow_call:
+    inputs:
+      target:
+        required: true
+
 env:
   CARGO_TERM_COLOR: always
+
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.target }}
     steps:
       - name: Test (standard)
       - uses: travisbaars/actions/rust/std-test.yml@main

@@ -1,19 +1,17 @@
 name: Deploy to Crates.io
 on:
-  push:
-    tags:
-      - "v*.*.*"
-jobs:
-  test:
-    name: Build / Test
-    uses: travisbaars/actions/rust/std-test.yml@main
+  workflow_call:
+    inputs:
+      target:
+        required: true
+    secrets:
+      token:
+        required: true
+
   publish:
-    runs-on: ubuntu-latest
-    needs: test
+    runs-on: ${{ inputs.target }}
     name: Publish
     steps:
       - uses: actions/checkout@v4
 
-      - run: cargo publish --token ${CRATES_TOKEN}
-        env:
-          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+      - run: cargo publish --token ${{ secrets.token }}
