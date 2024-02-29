@@ -1,0 +1,14 @@
+name: Integration
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test (standard)
+      - uses: travisbaars/actions/rust/std-test.yml@main

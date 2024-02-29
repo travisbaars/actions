@@ -1,0 +1,19 @@
+name: Deploy to Crates.io
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  test:
+    name: Build / Test
+    uses: travisbaars/actions/rust/std-test.yml@main
+  publish:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Publish
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: cargo publish --token ${CRATES_TOKEN}
+        env:
+          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
