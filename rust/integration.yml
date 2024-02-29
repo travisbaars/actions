@@ -1,16 +1,13 @@
 name: Integration
 on:
   workflow_call:
-    inputs:
-      target:
-        required: true
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
   build-test:
-    runs-on: ${{ inputs.target }}
+    runs-on: ubuntu-latest
     steps:
       - name: Test (standard)
       - uses: travisbaars/actions/rust/std-test.yml@main

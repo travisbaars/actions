@@ -1,15 +1,12 @@
 name: Deploy to Crates.io
 on:
   workflow_call:
-    inputs:
-      target:
-        required: true
     secrets:
       token:
         required: true
 
   publish:
-    runs-on: ${{ inputs.target }}
+    runs-on: ubuntu-latest
     name: Publish
     steps:
       - uses: actions/checkout@v4
