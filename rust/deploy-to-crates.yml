@@ -12,3 +12,5 @@ on:
       - uses: actions/checkout@v4
 
       - run: cargo publish --token ${{ secrets.token }}
+        with:
+          repo-token: ${{ secrets.token }}
