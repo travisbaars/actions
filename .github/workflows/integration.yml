@@ -7,5 +7,13 @@ env:
 
 jobs:
   build-test:
-    name: Test (standard)
-    uses: travisbaars/actions-rs/.github/workflows/std-test.yml@main
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+      - uses: travisbaars/actions-rs/.github/workflows/std-test.yml@main
+
+  format:
+    runs-on: ubuntu-latest
+    name: Format
+    steps:
+      - uses: travisbaars/actions-rs/.github/workflows/format.yml@main
